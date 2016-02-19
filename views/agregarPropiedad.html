@@ -1,0 +1,242 @@
+<div class="container" ng-controller="propiedadCtrl">
+    <div>
+        <div>
+            <ol class="breadcrumb">
+                <li><a href="#/">Home</a></li>
+                <li class="active">Agregar Propiedad</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row row-content">
+        <div class="col-xs-12 col-sm-9">
+            <h3>Agregar propiedad</h3>
+            <h6>-</h6>
+        </div>
+        <div class="col-xs-12 col-sm-9">
+            <form class="form-horizontal" role="form" id="ingPropiedad">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Tipo</label>
+                    <div class="col-sm-5">
+                        <label class="radio-inline">
+                            <input type="radio" name="tipoalq" ng-click="hideControls('condominio')" value="condominio" checked>
+                            <strong>Condomino</strong>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="tipoalq" ng-click="hideControls('casa')" value="casa">
+                            <strong>Casa (Residencial)</strong>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="condominio" class="col-sm-2 control-label">Condominio</label>
+                    <div class="col-sm-10">
+                        <select id="condominio" class="form-control">
+
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Tipo</label>
+                    <div class="col-sm-5">
+                        <label class="radio-inline">
+                            <input type="radio" name="venta" value="">
+                            <strong>Venta</strong>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="venta" value="">
+                            <strong>Alquiler</strong>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="direccion" class="col-sm-2 control-label">Dirección</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="direccion" name="feedback" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Tipo 2</label>
+                    <div class="col-sm-5">
+                        <label class="radio-inline">
+                            <input type="radio" name="venta" value="">
+                            <strong>Corredor</strong>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="venta" value="">
+                            <strong>Propietario</strong>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="telnum" class="col-xs-12 col-sm-2 control-label">Teléfono</label>
+                    <div class="col-xs-7 col-sm-6 col-md-7">
+                        <input type="tel" class="form-control" id="telnum" name="telnum" placeholder="Tel. number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="comision" class="col-sm-2 control-label">Comision</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="comision" name="comision" placeholder="Comision">
+                    </div>
+                    <label for="cuota" class="col-sm-2 control-label cuotamant" ng-show="isCondominio">Cuota Mant.</label>
+                    <div class="col-sm-4 cuotamant" ng-show="isCondominio">
+                        <input type="text" class="form-control cuotamant" ng-show="isCondominio" id="cuota" name="cuota" placeholder="Cuota Mantenimiento">
+                    </div>
+                    <label for="cuotaseg" class="col-sm-2 control-label cuotaseg" ng-show="isCasaResindencial">Cuota Seg.</label>
+                    <div class="col-sm-4 cuotaseg" ng-show="isCasaResindencial">
+                        <input type="text" class="form-control cuotaseg" id="cuotaseg" name="cuotaseg" ng-show="isCasaResindencial" placeholder="Cuota Seguridad">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lote" class="col-sm-2 control-label">Lote</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="lote" name="lote" placeholder="Lote">
+                    </div>
+                    <label for="const" class="col-sm-2 control-label">Const</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="const" name="const" placeholder="Const">
+                    </div>
+                    <label for="anos" class="col-sm-2 control-label">Años</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="anos" name="anos" placeholder="Años">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="niv" class="col-sm-2 control-label">Niveles</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="niv" name="niv" placeholder="Niveles">
+                    </div>
+                    <label for="garg" class="col-sm-2 control-label">Garage</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="garg" name="garg" placeholder="Garage">
+                    </div>
+                    <label for="hab" class="col-sm-2 control-label">Habitaciones</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="hab" name="hab" placeholder="Habitaciones">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="bn" class="col-sm-2 control-label">Baños</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="bn" name="bn" placeholder="Baños">
+                    </div>
+                    <label for="ofic" class="col-sm-2 control-label">Oficina</label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input name="ofic" id="ofic" type="checkbox">
+                            </label>
+                        </div>
+                    </div>
+                    <label for="terra" class="col-sm-2 control-label">Terra</label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input name="terra" id="terra" type="checkbox">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="patio" class="col-sm-2 control-label">Patio</label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input name="patio" id="patio" type="checkbox">
+                            </label>
+                        </div>
+                    </div>
+                    <label for="sal" class="col-sm-2 control-label">Sala</label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input name="sal" id="sal" type="checkbox">
+                            </label>
+                        </div>
+                    </div>
+                    <label for="antecom" class="col-sm-2 control-label">Ante-Com</label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input name="antecom" id="antecom" type="checkbox">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ctoserv" class="col-sm-2 control-label">CTO-Serv</label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input name="ctoserv" id="ctoserv" type="checkbox">
+                            </label>
+                        </div>
+                    </div>
+                    <label for="saltv" class="col-sm-2 control-label">Sal-TV</label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input name="saltv" id="saltv" type="checkbox">
+                            </label>
+                        </div>
+                    </div>
+                    <label for="coc" class="col-sm-2 control-label">Cocina</label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input name="coc" id="coc" type="checkbox">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ctopilas" class="col-sm-2 control-label">CTO-Pilas</label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input name="ctopilas" id="ctopilas" type="checkbox">
+                            </label>
+                        </div>
+                    </div>
+                    <label for="bodega" class="col-sm-2 control-label">Bodega</label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input name="bodega" id="bodega" type="checkbox">
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="otros" class="col-sm-2 control-label">Otros</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="otros" name="otros" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="form-group" id="areacomp" ng-show="isCondominio">
+                    <label for="otros" class="col-sm-2 control-label">Área Comp.</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="areacom" name="areacom" placeholder="Área Compartida">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="observaciones" class="col-sm-2 control-label">Observaciones</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="observaciones" name="observaciones" rows="12"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Agregar Propiedad</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <p style="padding:20px;"></p>
+        </div>
+    </div>
+
+</div>
