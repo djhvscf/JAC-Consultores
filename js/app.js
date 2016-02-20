@@ -9,6 +9,12 @@ angular.module('jacconsultores', ['ngRoute', 'jacconsultoresControllers'])
                 controller: "propiedadCtrl",
                 controllerAs: "propiedad"
             }
+        ).when("/listaPropiedades",
+            {
+                templateUrl: "views/listaPropiedades.html",
+                controller: "listaPropiedadesCtrl",
+                controllerAs: "listaPropiedad"
+            }
         ).when("/agregarLote",
             {
                 templateUrl: "views/agregarLote.html",
