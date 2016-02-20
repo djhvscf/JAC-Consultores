@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('jacconsultores', ['ngRoute'])
+angular.module('jacconsultores', ['ngRoute', 'jacconsultoresControllers'])
 
     .config(function($routeProvider){
         $routeProvider.when("/agregarPropiedad",
@@ -24,27 +24,4 @@ angular.module('jacconsultores', ['ngRoute'])
         ).otherwise({
             redirectTo: '/agregarPropiedad'
         });
-    })
-
-    .controller('propiedadCtrl', function($scope) {
-        var that = this;
-
-        $scope.isCondominio = true;
-        $scope.isCasaResindencial = false;
-
-        $scope.hideControls = function (name) {
-            if(name === "casa"){
-                //$(".cuotaseg").show();
-                $scope.isCondominio = false;
-                $scope.isCasaResindencial = true;
-            } else {
-                //$(".cuotaseg").hide();
-                $scope.isCondominio = true;
-                $scope.isCasaResindencial = false;
-            }
-        };
-    }).controller("loteCtrl", function($scope) {
-        var that = this;
-    }).controller("clienteCtrl", function($scope) {
-        var that = this;
     });
