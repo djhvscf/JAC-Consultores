@@ -1,0 +1,93 @@
+<div class="container" ng-controller="loteCtrl">
+    <div>
+        <div>
+            <ol class="breadcrumb">
+                <li><a href="#/">Home</a></li>
+                <li class="active">Agregar Lote</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row row-content">
+        <div class="col-xs-12 col-sm-9">
+            <h3>Agregar Lote</h3>
+            <h6>-</h6>
+        </div>
+        <div class="col-xs-12 col-sm-9">
+            <form class="form-horizontal" role="form" id="ingPropiedad">
+                <div class="form-group">
+                    <label for="residencial" class="col-sm-2 control-label">Residencial</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="residencial" name="residencial" placeholder="Residencial">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Tipo 2</label>
+                    <div class="col-sm-5">
+                        <label class="radio-inline">
+                            <input type="radio" name="venta" value="">
+                            <strong>Corredor</strong>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="venta" value="">
+                            <strong>Propietario</strong>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="direccion" class="col-sm-2 control-label">Dirección</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="direccion" name="direccion" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion" class="col-sm-2 control-label">Descripción</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="plncatastro" class="col-sm-2 control-label">Plano Catastro</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="plncatastro" name="plncatastro" placeholder="Plano Catastro">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="area" class="col-sm-2 control-label">Área</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="area" name="area" placeholder="Área">
+                    </div>
+                    <label for="preciom" class="col-sm-2 control-label">Precio m2</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="preciom" name="preciom" placeholder="Precio m2">
+                    </div>
+                    <label for="cuotaman" class="col-sm-2 control-label">Cuota Mant.</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="cuotaman" name="cuotaman" placeholder="Cuota Mantenimiento">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="preciototal" class="col-sm-2 control-label">Precio Total</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="preciototal" name="preciototal" placeholder="Precio Total">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="observaciones" class="col-sm-2 control-label">Observaciones</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="observaciones" name="observaciones" rows="12"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Agregar Lote</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <p style="padding:20px;"></p>
+        </div>
+    </div>
+
+</div>
