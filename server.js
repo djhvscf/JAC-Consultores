@@ -26,7 +26,9 @@ var Todo = mongoose.model('Todo', {
  * Condominios API
  ****************************************************************/
 var Condominio = mongoose.model("Condominio", {
-    nombre: String
+    nombre: String,
+    direccion: String,
+    telefono: String
 });
 
 app.get('/api/condominios', function(req, res) {
@@ -40,7 +42,9 @@ app.get('/api/condominios', function(req, res) {
 
 app.post('/api/condominios', function(req, res) {
     Condominio.create({
-        nombre: req.body.nombre
+        nombre: req.body.nombre,
+        direccion: req.body.direccion,
+        telefono: req.body.telefono
     }, function(err, condominio){
         if(err) {
             res.send(err);
@@ -104,6 +108,8 @@ app.get('/api/propiedad', function(req, res) {
 
 app.post('/api/propiedad', function(req, res) {
     Propiedad.create({
+        isCasaCondominio: req.body.isCasaCondominio,
+        idCondominio: req.body.idCondominio,
         isVenta: req.body.isVenta,
         direccion: req.body.direccion,
         isPropietario: req.body.isPropietario,

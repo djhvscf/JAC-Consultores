@@ -59,6 +59,10 @@ jacconsultoresControllers.controller('propiedadCtrl', function ($scope, $http) {
 });
 
 jacconsultoresControllers.controller("listaPropiedadesCtrl", function ($scope, $http) {
+    $scope.genericFormatter = function (value, row, index) {
+        return value ? "S&iacute" : "No";
+    };
+
     $scope.listaPropiedades = function () {
         $http.get('/api/propiedad')
             .success(function (data) {
@@ -66,17 +70,22 @@ jacconsultoresControllers.controller("listaPropiedadesCtrl", function ($scope, $
                 $('#table').bootstrapTable({
                     data: data,
                     undefinedText: "",
+                    search: true,
+                    locale: "es-CR",
+                    showColumns: true,
                     columns: [{
                         field: 'isVenta',
                         title: 'Es una Venta',
-                        sortable: true
+                        sortable: true,
+                        formatter: $scope.genericFormatter
                     }, {
                         field: 'direccion',
                         title: 'Direcci&oacuten'
                     }, {
                         field: 'isPropietario',
                         title: 'Es del Propietario',
-                        sortable: true
+                        sortable: true,
+                        formatter: $scope.genericFormatter
                     }, {
                         field: 'telefono',
                         title: 'Tel&eacutefono'
@@ -122,44 +131,54 @@ jacconsultoresControllers.controller("listaPropiedadesCtrl", function ($scope, $
                         sortable: true
                     }, {
                         field: 'oficina',
-                        title: 'Oficina',
-                        sortable: true
+                        title: 'Tiene Oficina',
+                        sortable: true,
+                        formatter: $scope.genericFormatter
                     }, {
                         field: 'terra',
                         title: 'Tiene Terraza',
-                        sortable: true
+                        sortable: true,
+                        formatter: $scope.genericFormatter
                     }, {
                         field: 'patio',
                         title: 'Tiene Patio',
-                        sortable: true
+                        sortable: true,
+                        formatter: $scope.genericFormatter
                     }, {
                         field: 'sala',
                         title: 'Tiene Sala',
-                        sortable: true
+                        sortable: true,
+                        formatter: $scope.genericFormatter
                     }, {
                         field: 'anteComedor',
                         title: 'Tiene Ante-Comedor',
-                        sortable: true
+                        sortable: true,
+                        formatter: $scope.genericFormatter
                     }, {
                         field: 'ctoServ',
                         title: 'Tiene Cuarto de Servicio',
-                        sortable: true
+                        sortable: true,
+                        formatter: $scope.genericFormatter
                     }, {
                         field: 'salaTv',
                         title: 'Tiene Sala de Televisi&oacuten',
-                        sortable: true
+                        sortable: true,
+                        formatter: $scope.genericFormatter
                     }, {
                         field: 'cocina',
                         title: 'Tiene Cocina',
-                        sortable: true
+                        sortable: true,
+                        formatter: $scope.genericFormatter
                     }, {
                         field: 'ctoPilas',
                         title: 'Tiene Cuarto de Pilas',
-                        sortable: true
+                        sortable: true,
+                        formatter: $scope.genericFormatter
                     }, {
                         field: 'bodega',
                         title: 'Tiene Bodega',
-                        sortable: true
+                        sortable: true,
+                        formatter: $scope.genericFormatter
                     }, {
                         field: 'otros',
                         title: 'Otros'
