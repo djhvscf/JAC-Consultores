@@ -13,9 +13,9 @@ jacconsultoresControllers.controller('propiedadCtrl', function ($scope, $http) {
         $scope.isCasaResindencial = name === "casa" ? true : false;
     };
 
-    /**
+    /**************
      * Condominos
-     */
+     *************/
     $http.get('/api/condominios')
         .success(function(data) {
             $scope.condominios = data;
@@ -35,15 +35,13 @@ jacconsultoresControllers.controller('propiedadCtrl', function ($scope, $http) {
                 console.log('Error:' + data);
             });
     };
-
-    //$scope.createCondominio();
-    /**
+    /*****************
      * Condominos
-     */
+     ****************/
 
-    /**
+    /**************
      * Propiedades
-     */
+     *************/
 
     /*$http.get('/api/propiedad')
         .success(function(data) {
@@ -63,9 +61,9 @@ jacconsultoresControllers.controller('propiedadCtrl', function ($scope, $http) {
                 console.log('Error:' + data);
             });
     };
-    /**
+    /**************
      * Propiedades
-     */
+     *************/
 });
 
 jacconsultoresControllers.controller('loteCtrl', function ($scope, $http) {

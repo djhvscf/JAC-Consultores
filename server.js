@@ -3,7 +3,8 @@ var app         = express();
 var mongoose     = require('mongoose');
 
 // Conexión con la base de datos
-mongoose.connect('mongodb://localhost:27017/jacconsultores');
+//mongoose.connect('mongodb://localhost:27017/jacconsultores');
+mongoose.connect('mongodb://jac:jac@ds059375.mongolab.com:59375/jacconsultores');
 
 // Configuración
 app.configure(function() {
@@ -101,7 +102,6 @@ app.get('/api/propiedad', function(req, res) {
     });
 });
 
-// POST que crea un TODO y devuelve todos tras la creación
 app.post('/api/propiedad', function(req, res) {
     Propiedad.create({
         isVenta: req.body.isVenta,
