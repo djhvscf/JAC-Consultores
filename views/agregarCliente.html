@@ -1,105 +1,102 @@
-<div class="container" ng-controller="propiedadCtrl">
+<div class="container" ng-controller="clienteCtrl">
     <div>
         <div>
             <ol class="breadcrumb">
                 <li><a href="#/">Home</a></li>
-                <li class="active">Agregar Propiedad</li>
+                <li class="active">Agregar Cliente</li>
             </ol>
         </div>
     </div>
 
     <div class="row row-content">
         <div class="col-xs-12 col-sm-9">
-            <h3>Agregar Propiedad</h3>
+            <h3>Agregar Cliente</h3>
             <h6>-</h6>
         </div>
         <div class="col-xs-12 col-sm-9">
-            <form class="form-horizontal" role="form" id="ingPropiedad">
+            <form class="form-horizontal" role="form" id="ingCliente">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Tipo</label>
                     <div class="col-sm-5">
                         <label class="radio-inline">
-                            <input type="radio" name="tipoalq" ng-click="hideControls('condominio')" value="condominio" checked>
-                            <strong>Condomino</strong>
+                            <input type="radio" name="tipoalq" value="compra">
+                            <strong>Compra</strong>
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="tipoalq" ng-click="hideControls('casa')" value="casa">
-                            <strong>Casa (Residencial)</strong>
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="condominio" class="col-sm-2 control-label">Condominio</label>
-                    <div class="col-sm-10">
-                        <select id="condominio" class="form-control">
-
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Tipo</label>
-                    <div class="col-sm-5">
-                        <label class="radio-inline">
-                            <input type="radio" name="venta" value="">
-                            <strong>Venta</strong>
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="venta" value="">
+                            <input type="radio" name="tipoalq" value="alquiler">
                             <strong>Alquiler</strong>
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="direccion" class="col-sm-2 control-label">Dirección</label>
+                    <label for="nombre" class="col-xs-12 col-sm-2 control-label">Nombre</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" id="direccion" name="feedback" rows="6"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Tipo 2</label>
-                    <div class="col-sm-5">
-                        <label class="radio-inline">
-                            <input type="radio" name="venta" value="">
-                            <strong>Corredor</strong>
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="venta" value="">
-                            <strong>Propietario</strong>
-                        </label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="telnum" class="col-xs-12 col-sm-2 control-label">Teléfono</label>
-                    <div class="col-xs-7 col-sm-6 col-md-7">
-                        <input type="tel" class="form-control" id="telnum" name="telnum" placeholder="Tel. number">
+                    <div class="col-sm-5">
+                        <input type="tel" class="form-control" id="telnum" name="telnum" placeholder="Teléfono">
+                    </div>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="telnum2" name="telnum2" placeholder="Teléfono 2">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="comision" class="col-sm-2 control-label">Comision</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="comision" name="comision" placeholder="Comision">
+                    <label for="referido" class="col-sm-2 control-label">Referido</label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input name="referido" id="referido" type="checkbox">
+                            </label>
+                        </div>
                     </div>
-                    <label for="cuota" class="col-sm-2 control-label cuotamant" ng-show="isCondominio">Cuota Mant.</label>
-                    <div class="col-sm-4 cuotamant" ng-show="isCondominio">
-                        <input type="text" class="form-control cuotamant" ng-show="isCondominio" id="cuota" name="cuota" placeholder="Cuota Mantenimiento">
-                    </div>
-                    <label for="cuotaseg" class="col-sm-2 control-label cuotaseg" ng-show="isCasaResindencial">Cuota Seg.</label>
-                    <div class="col-sm-4 cuotaseg" ng-show="isCasaResindencial">
-                        <input type="text" class="form-control cuotaseg" id="cuotaseg" name="cuotaseg" ng-show="isCasaResindencial" placeholder="Cuota Seguridad">
+                    <label for="telnumref" class="col-sm-2 control-label">Teléfono</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="telnumref" name="telnumref" placeholder="Teléfono Referido">
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="comision" class="col-sm-2 control-label">Comisión</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="comision" name="comision" placeholder="Comisión">
+                    </div>
+                    <label for="fecha" class="col-sm-2 control-label">Fecha</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control" id="fecha" name="fecha">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="casa" class="col-sm-2 control-label">Casa</label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input name="casa" id="casa" type="checkbox">
+                            </label>
+                        </div>
+                    </div>
+                    <label for="condominio" class="col-sm-2 control-label">Condominio</label>
+                    <div class="col-sm-2">
+                        <div class="checkbox">
+                            <label>
+                                <input name="condominio" id="condominio" type="checkbox">
+                            </label>
+                        </div>
+                    </div>
                     <label for="lote" class="col-sm-2 control-label">Lote</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="lote" name="lote" placeholder="Lote">
+                        <div class="checkbox">
+                            <label>
+                                <input name="lote" id="lote" type="checkbox">
+                            </label>
+                        </div>
                     </div>
-                    <label for="const" class="col-sm-2 control-label">Const</label>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" id="const" name="const" placeholder="Const">
-                    </div>
-                    <label for="anos" class="col-sm-2 control-label">Años</label>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" id="anos" name="anos" placeholder="Años">
+                </div>
+                <div class="form-group">
+                    <label for="otroscliente" class="col-sm-2 control-label">Otros</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="otroscliente" name="otroscliente" rows="4"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -207,18 +204,11 @@
                             </label>
                         </div>
                     </div>
-
                 </div>
                 <div class="form-group">
                     <label for="otros" class="col-sm-2 control-label">Otros</label>
                     <div class="col-sm-10">
                         <textarea class="form-control" id="otros" name="otros" rows="4"></textarea>
-                    </div>
-                </div>
-                <div class="form-group" id="areacomp" ng-show="isCondominio">
-                    <label for="otros" class="col-sm-2 control-label">Área Comp.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="areacom" name="areacom" placeholder="Área Compartida">
                     </div>
                 </div>
                 <div class="form-group">
@@ -229,7 +219,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">Agregar Propiedad</button>
+                        <button type="submit" class="btn btn-primary">Agregar Cliente</button>
                     </div>
                 </div>
             </form>

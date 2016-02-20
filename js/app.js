@@ -14,7 +14,14 @@ angular.module('jacconsultores', ['ngRoute'])
                 templateUrl: "views/agregarLote.html",
                 controller: "loteCtrl",
                 controllerAs: "lote"
-            });
+            }
+        ).when("/agregarCliente",
+            {
+                templateUrl: "views/agregarCliente.html",
+                controller: "clienteCtrl",
+                controllerAs: "cliente"
+            }
+        );
     })
 
     .controller('propiedadCtrl', function($scope) {
@@ -34,4 +41,8 @@ angular.module('jacconsultores', ['ngRoute'])
                 $scope.isCasaResindencial = false;
             }
         };
+    }).controller("loteCtrl", function($scope) {
+        var that = this;
+    }).controller("clienteCtrl", function($scope) {
+        var that = this;
     });
