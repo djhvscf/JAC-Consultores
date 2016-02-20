@@ -21,7 +21,9 @@ angular.module('jacconsultores', ['ngRoute'])
                 controller: "clienteCtrl",
                 controllerAs: "cliente"
             }
-        );
+        ).otherwise({
+            redirectTo: '/agregarPropiedad'
+        });
     })
 
     .controller('propiedadCtrl', function($scope) {
