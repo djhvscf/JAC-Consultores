@@ -80,7 +80,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">Agregar Lote</button>
+                        <button type="submit" class="btn btn-primary" ng-click="createTodo()">Agregar Lote</button>
                     </div>
                 </div>
             </form>
@@ -90,4 +90,10 @@
         </div>
     </div>
 
+</div>
+
+<div class="checkbox" ng-repeat="todo in todos">
+    <label>
+        <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
+    </label>
 </div>

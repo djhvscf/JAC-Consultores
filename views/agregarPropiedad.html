@@ -31,16 +31,15 @@
                 <div class="form-group">
                     <label for="condominio" class="col-sm-2 control-label">Condominio</label>
                     <div class="col-sm-10">
-                        <select id="condominio" class="form-control">
-
-                        </select>
+                        <select id="condominio" class="form-control" ng-model="selectedCondominio.condominioId"
+                                ng-options="condominio._id as condominio.nombre for condominio in condominios"></select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Tipo</label>
                     <div class="col-sm-5">
                         <label class="radio-inline">
-                            <input type="radio" name="venta" value="">
+                            <input type="radio" name="venta" value="" ng-model="formPropiedad.isVenta">
                             <strong>Venta</strong>
                         </label>
                         <label class="radio-inline">
@@ -52,14 +51,14 @@
                 <div class="form-group">
                     <label for="direccion" class="col-sm-2 control-label">Dirección</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" id="direccion" name="feedback" rows="6"></textarea>
+                        <textarea class="form-control" id="direccion" name="feedback" rows="6" ng-model="formPropiedad.direccion"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Tipo 2</label>
                     <div class="col-sm-5">
                         <label class="radio-inline">
-                            <input type="radio" name="venta" value="">
+                            <input type="radio" name="venta" value="" ng-model="formPropiedad.isPropietario">
                             <strong>Corredor</strong>
                         </label>
                         <label class="radio-inline">
@@ -71,61 +70,61 @@
                 <div class="form-group">
                     <label for="telnum" class="col-xs-12 col-sm-2 control-label">Teléfono</label>
                     <div class="col-xs-7 col-sm-6 col-md-7">
-                        <input type="tel" class="form-control" id="telnum" name="telnum" placeholder="Tel. number">
+                        <input type="tel" class="form-control" id="telnum" name="telnum" ng-model="formPropiedad.telefono" placeholder="Teléfono">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="comision" class="col-sm-2 control-label">Comision</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="comision" name="comision" placeholder="Comision">
+                        <input type="text" class="form-control" id="comision" name="comision" ng-model="formPropiedad.comision" placeholder="Comision">
                     </div>
                     <label for="cuota" class="col-sm-2 control-label cuotamant" ng-show="isCondominio">Cuota Mant.</label>
                     <div class="col-sm-4 cuotamant" ng-show="isCondominio">
-                        <input type="text" class="form-control cuotamant" ng-show="isCondominio" id="cuota" name="cuota" placeholder="Cuota Mantenimiento">
+                        <input type="text" class="form-control cuotamant" ng-show="isCondominio" ng-model="formPropiedad.cuotaMant" id="cuota" name="cuota" placeholder="Cuota Mantenimiento">
                     </div>
                     <label for="cuotaseg" class="col-sm-2 control-label cuotaseg" ng-show="isCasaResindencial">Cuota Seg.</label>
                     <div class="col-sm-4 cuotaseg" ng-show="isCasaResindencial">
-                        <input type="text" class="form-control cuotaseg" id="cuotaseg" name="cuotaseg" ng-show="isCasaResindencial" placeholder="Cuota Seguridad">
+                        <input type="text" class="form-control cuotaseg" id="cuotaseg" name="cuotaseg" ng-model="formPropiedad.cuotaSeg" ng-show="isCasaResindencial" placeholder="Cuota Seguridad">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="lote" class="col-sm-2 control-label">Lote</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="lote" name="lote" placeholder="Lote">
+                        <input type="text" class="form-control" ng-model="formPropiedad.lote" id="lote" name="lote" placeholder="Lote">
                     </div>
                     <label for="const" class="col-sm-2 control-label">Const</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="const" name="const" placeholder="Const">
+                        <input type="text" class="form-control" id="const" ng-model="formPropiedad.const" name="const" placeholder="Const">
                     </div>
                     <label for="anos" class="col-sm-2 control-label">Años</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="anos" name="anos" placeholder="Años">
+                        <input type="text" class="form-control" id="anos" ng-model="formPropiedad.anos" name="anos" placeholder="Años">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="niv" class="col-sm-2 control-label">Niveles</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="niv" name="niv" placeholder="Niveles">
+                        <input type="text" class="form-control" id="niv" ng-model="formPropiedad.niveles" name="niv" placeholder="Niveles">
                     </div>
                     <label for="garg" class="col-sm-2 control-label">Garage</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="garg" name="garg" placeholder="Garage">
+                        <input type="text" class="form-control" id="garg" ng-model="formPropiedad.garage" name="garg" placeholder="Garage">
                     </div>
                     <label for="hab" class="col-sm-2 control-label">Habitaciones</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="hab" name="hab" placeholder="Habitaciones">
+                        <input type="text" class="form-control" id="hab" ng-model="formPropiedad.habitaciones" name="hab" placeholder="Habitaciones">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="bn" class="col-sm-2 control-label">Baños</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="bn" name="bn" placeholder="Baños">
+                        <input type="text" class="form-control" id="bn" name="bn" ng-model="formPropiedad.banos" placeholder="Baños">
                     </div>
                     <label for="ofic" class="col-sm-2 control-label">Oficina</label>
                     <div class="col-sm-2">
                         <div class="checkbox">
                             <label>
-                                <input name="ofic" id="ofic" type="checkbox">
+                                <input name="ofic" id="ofic" type="checkbox" ng-model="formPropiedad.oficina">
                             </label>
                         </div>
                     </div>
@@ -133,7 +132,7 @@
                     <div class="col-sm-2">
                         <div class="checkbox">
                             <label>
-                                <input name="terra" id="terra" type="checkbox">
+                                <input name="terra" id="terra" type="checkbox" ng-model="formPropiedad.terra">
                             </label>
                         </div>
                     </div>
@@ -143,7 +142,7 @@
                     <div class="col-sm-2">
                         <div class="checkbox">
                             <label>
-                                <input name="patio" id="patio" type="checkbox">
+                                <input name="patio" id="patio" type="checkbox" ng-model="formPropiedad.patio">
                             </label>
                         </div>
                     </div>
@@ -151,7 +150,7 @@
                     <div class="col-sm-2">
                         <div class="checkbox">
                             <label>
-                                <input name="sal" id="sal" type="checkbox">
+                                <input name="sal" id="sal" type="checkbox" ng-model="formPropiedad.sala">
                             </label>
                         </div>
                     </div>
@@ -159,7 +158,7 @@
                     <div class="col-sm-2">
                         <div class="checkbox">
                             <label>
-                                <input name="antecom" id="antecom" type="checkbox">
+                                <input name="antecom" id="antecom" type="checkbox" ng-model="formPropiedad.anteComedor">
                             </label>
                         </div>
                     </div>
@@ -169,7 +168,7 @@
                     <div class="col-sm-2">
                         <div class="checkbox">
                             <label>
-                                <input name="ctoserv" id="ctoserv" type="checkbox">
+                                <input name="ctoserv" id="ctoserv" type="checkbox" ng-model="formPropiedad-ctoServ">
                             </label>
                         </div>
                     </div>
@@ -177,7 +176,7 @@
                     <div class="col-sm-2">
                         <div class="checkbox">
                             <label>
-                                <input name="saltv" id="saltv" type="checkbox">
+                                <input name="saltv" id="saltv" type="checkbox" ng-model="formPropiedad.salaTv">
                             </label>
                         </div>
                     </div>
@@ -185,7 +184,7 @@
                     <div class="col-sm-2">
                         <div class="checkbox">
                             <label>
-                                <input name="coc" id="coc" type="checkbox">
+                                <input name="coc" id="coc" type="checkbox" ng-model="formPropiedad.cocina">
                             </label>
                         </div>
                     </div>
@@ -195,7 +194,7 @@
                     <div class="col-sm-2">
                         <div class="checkbox">
                             <label>
-                                <input name="ctopilas" id="ctopilas" type="checkbox">
+                                <input name="ctopilas" id="ctopilas" type="checkbox" ng-model="formPropiedad.ctoPilas">
                             </label>
                         </div>
                     </div>
@@ -203,7 +202,7 @@
                     <div class="col-sm-2">
                         <div class="checkbox">
                             <label>
-                                <input name="bodega" id="bodega" type="checkbox">
+                                <input name="bodega" id="bodega" type="checkbox" ng-model="formPropiedad.bodega">
                             </label>
                         </div>
                     </div>
@@ -212,24 +211,24 @@
                 <div class="form-group">
                     <label for="otros" class="col-sm-2 control-label">Otros</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" id="otros" name="otros" rows="4"></textarea>
+                        <textarea class="form-control" id="otros" name="otros" rows="4" ng-model="formPropiedad.otros"></textarea>
                     </div>
                 </div>
                 <div class="form-group" id="areacomp" ng-show="isCondominio">
                     <label for="otros" class="col-sm-2 control-label">Área Comp.</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="areacom" name="areacom" placeholder="Área Compartida">
+                        <input type="text" class="form-control" id="areacom" name="areacom" ng-model="formPropiedad.areaComp" placeholder="Área Compartida">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="observaciones" class="col-sm-2 control-label">Observaciones</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" id="observaciones" name="observaciones" rows="12"></textarea>
+                        <textarea class="form-control" id="observaciones" name="observaciones" ng-model="formPropiedad.observaciones" rows="12"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">Agregar Propiedad</button>
+                        <button type="submit" class="btn btn-primary" ng-click="createPropiedad()">Agregar Propiedad</button>
                     </div>
                 </div>
             </form>
