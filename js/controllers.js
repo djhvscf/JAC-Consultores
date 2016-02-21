@@ -1,4 +1,4 @@
-var jacconsultoresControllers = angular.module('jacconsultoresControllers', []);
+var jacconsultoresControllers = angular.module('jacconsultoresControllers', ['GeneralService']);
 
 jacconsultoresControllers.controller('propiedadCtrl', function ($scope, $http) {
     var that = this;
@@ -47,6 +47,7 @@ jacconsultoresControllers.controller('propiedadCtrl', function ($scope, $http) {
         $http.post('/api/propiedad', $scope.formPropiedad)
             .success(function(data) {
                 $scope.formPropiedad = {};
+                generalService.generateNoty("La Propiedad se agreg&oacute correctamente", 'success');
             })
             .error(function(data) {
                 console.log('Error:' + data);
@@ -197,7 +198,7 @@ jacconsultoresControllers.controller("listaPropiedadesCtrl", function ($scope, $
     $scope.listaPropiedades();
 });
 
-jacconsultoresControllers.controller('loteCtrl', function ($scope, $http) {
+jacconsultoresControllers.controller('loteCtrl', function ($scope, $http, generalService) {
     var that = this;
     $scope.formLote = {};
 
@@ -205,6 +206,7 @@ jacconsultoresControllers.controller('loteCtrl', function ($scope, $http) {
         $http.post('/api/lote', $scope.formLote)
             .success(function(data) {
                 $scope.formLote = {};
+                generalService.generateNoty("El Lote se agreg&oacute correctamente", 'success');
             })
             .error(function(data) {
                 console.log('Error:' + data);
@@ -216,10 +218,6 @@ jacconsultoresControllers.controller('listaLotesCtrl', function ($scope, $http) 
     $scope.genericFormatter = function (value, row, index) {
         return value ? "S&iacute" : "No";
     };
-
-    /*
-     observaciones: String
-     */
 
     $scope.listaLotes = function () {
         $http.get('/api/lote')
