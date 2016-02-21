@@ -26,7 +26,7 @@ var Condominio = mongoose.model("Condominio", {
     telefono: String
 });
 
-app.get('/api/condominios', function(req, res) {
+app.get('/api/condominio', function(req, res) {
     Condominio.find(function(err, condominios) {
         if(err) {
             res.send(err);
@@ -35,7 +35,7 @@ app.get('/api/condominios', function(req, res) {
     });
 });
 
-app.post('/api/condominios', function(req, res) {
+app.post('/api/condominio', function(req, res) {
     Condominio.create({
         nombre: req.body.nombre,
         direccion: req.body.direccion,

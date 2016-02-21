@@ -33,6 +33,18 @@ angular.module('jacconsultores', ['ngRoute', 'jacconsultoresControllers'])
                 controller: "clienteCtrl",
                 controllerAs: "cliente"
             }
+        ).when("/agregarCondominio",
+            {
+                templateUrl: "views/agregarCondominio.html",
+                controller: "condominioCtrl",
+                controllerAs: "condominio"
+            }
+        ).when("/listaCondominios",
+            {
+                templateUrl: "views/listaCondominios.html",
+                controller: "listaCondominiosCtrl",
+                controllerAs: "listaCondominio"
+            }
         ).otherwise({
             redirectTo: '/agregarPropiedad'
         });

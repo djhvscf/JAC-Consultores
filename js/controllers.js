@@ -274,6 +274,59 @@ jacconsultoresControllers.controller('listaLotesCtrl', function ($scope, $http) 
     $scope.listaLotes();
 });
 
+jacconsultoresControllers.controller("condominioCtrl", function ($scope, $http) {
+    $scope.formCondominio = {};
+
+    $http.get('/api/condominios')
+        .success(function(data) {
+            $scope.condominios = data;
+            generalService.generateNoty("El Condominio se agreg&oacute correctamente", 'success');
+        })
+        .error(function(data) {
+            console.log('Error: ' + data);
+        });
+
+    $scope.createCondominio = function(){
+        $http.post('/api/condominio', $scope.formCondominio)
+            .success(function(data) {
+                $scope.formCondominio = {};
+                $scope.condominios = data;
+            })
+            .error(function(data) {
+                console.log('Error:' + data);
+            });
+    };
+});
+
+jacconsultoresControllers.controller('listaCondominiosCtrl', function ($scope, $http) {
+    $scope.listaCondominios = function () {
+        $http.get('/api/condominio')
+            .success(function (data) {
+                $scope.condominios = data;
+                $('#table').bootstrapTable({
+                    data: data,
+                    undefinedText: "",
+                    search: true,
+                    locale: "es-CR",
+                    showColumns: true,
+                    columns: [{
+                        field: 'nombre',
+                        title: 'Nombre',
+                        sortable: true
+                    }, {
+                        field: 'direccion',
+                        title: 'Direcci&oacuten'
+                    }, {
+                        field: 'telefono',
+                        title: 'Tel&eacutefono'
+                    }]
+                });
+            });
+    };
+
+    $scope.listaCondominios();
+});
+
 jacconsultoresControllers.controller('clienteCtrl', function ($scope) {
     var that = this;
     $scope.formData = {text: "str"};
