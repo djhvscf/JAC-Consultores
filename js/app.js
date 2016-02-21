@@ -21,6 +21,12 @@ angular.module('jacconsultores', ['ngRoute', 'jacconsultoresControllers'])
                 controller: "loteCtrl",
                 controllerAs: "lote"
             }
+        ).when("/listaLotes",
+            {
+                templateUrl: "views/listaLotes.html",
+                controller: "listaLotesCtrl",
+                controllerAs: "listaLote"
+            }
         ).when("/agregarCliente",
             {
                 templateUrl: "views/agregarCliente.html",

@@ -6,15 +6,10 @@ var mongoose     = require('mongoose');
 //mongoose.connect('mongodb://localhost:27017/jacconsultores');
 mongoose.connect('mongodb://jac:jac@ds059375.mongolab.com:59375/jacconsultores');
 
-// Configuración
 app.configure(function() {
-    // Localización de los ficheros estÃ¡ticos
     app.use(express.static(__dirname + '/'));
-    // Muestra un log de todos los request en la consola
     app.use(express.logger('dev'));
-    // Permite cambiar el HTML con el método POST
     app.use(express.bodyParser());
-    // Simula DELETE y PUT
     app.use(express.methodOverride());
 });
 
@@ -66,6 +61,8 @@ app.post('/api/condominios', function(req, res) {
  * Propiedad API
  ****************************************************************/
 var Propiedad = mongoose.model("Propiedad", {
+    isCasaCondominio: Boolean,
+    idCondominio: Number,
     isVenta: Boolean,
     direccion: String,
     isPropietario: Boolean,
@@ -95,8 +92,6 @@ var Propiedad = mongoose.model("Propiedad", {
     observaciones: String
 });
 
-// Rutas de nuestro API
-// GET de todos los TODOs
 app.get('/api/propiedad', function(req, res) {
     Propiedad.find(function(err, propiedades) {
         if(err) {
@@ -152,6 +147,60 @@ app.post('/api/propiedad', function(req, res) {
 });
 /*****************************************************************
  * Propiedad API
+ ****************************************************************/
+
+/*****************************************************************
+ * Lote API
+ ****************************************************************/
+var Lote = mongoose.model("Lote", {
+    residencial: String,
+    isPropietario: Boolean,
+    direccion: String,
+    descripcion: String,
+    planoCatastro: String,
+    area: Number,
+    preciom2: Number,
+    cuotaMant: Number,
+    precioTotal: Number,
+    observaciones: String
+});
+
+app.get('/api/lote', function(req, res) {
+    Lote.find(function(err, lotes) {
+        if(err) {
+            res.send(err);
+        }
+        res.json(lotes);
+    });
+});
+
+app.post('/api/lote', function(req, res) {
+    Lote.create({
+        residencial: req.body.residencial,
+        isPropietario: req.body.isPropietario,
+        direccion: req.body.direccion,
+        descripcion: req.body.descripcion,
+        planoCatastro: req.body.planoCatastro,
+        area: req.body.area,
+        preciom2: req.body.preciom2,
+        cuotaMant: req.body.cuotaMant,
+        precioTotal: req.body.precioTotal,
+        observaciones: req.body.observaciones
+    }, function(err, lote){
+        if(err) {
+            res.send(err);
+        }
+
+        Lote.find(function(err, lotes) {
+            if(err){
+                res.send(err);
+            }
+            res.json(lotes);
+        });
+    });
+});
+/*****************************************************************
+ * Lote API
  ****************************************************************/
 
 

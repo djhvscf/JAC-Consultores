@@ -199,6 +199,85 @@ jacconsultoresControllers.controller("listaPropiedadesCtrl", function ($scope, $
 
 jacconsultoresControllers.controller('loteCtrl', function ($scope, $http) {
     var that = this;
+    $scope.formLote = {};
+
+    $scope.createLote = function () {
+        $http.post('/api/lote', $scope.formLote)
+            .success(function(data) {
+                $scope.formLote = {};
+            })
+            .error(function(data) {
+                console.log('Error:' + data);
+            });
+    };
+});
+
+jacconsultoresControllers.controller('listaLotesCtrl', function ($scope, $http) {
+    $scope.genericFormatter = function (value, row, index) {
+        return value ? "S&iacute" : "No";
+    };
+
+    /*
+     observaciones: String
+     */
+
+    $scope.listaLotes = function () {
+        $http.get('/api/lote')
+            .success(function (data) {
+                $scope.propiedades = data;
+                $('#table').bootstrapTable({
+                    data: data,
+                    undefinedText: "",
+                    search: true,
+                    locale: "es-CR",
+                    showColumns: true,
+                    columns: [{
+                        field: 'residencial',
+                        title: 'Residencial'
+                    }, {
+                        field: 'direccion',
+                        title: 'Direcci&oacuten'
+                    }, {
+                        field: 'isPropietario',
+                        title: 'Es del Propietario',
+                        sortable: true,
+                        formatter: $scope.genericFormatter
+                    }, {
+                        field: 'descripcion',
+                        title: 'Descripci&oacuten'
+                    }, {
+                        field: 'planoCatastro',
+                        title: 'Plano Catastro',
+                        sortable: true
+                    }, {
+                        field: 'cuotaMant',
+                        title: 'Cuota de Mantenimiento',
+                        sortable: true
+                    }, {
+                        field: 'area',
+                        title: '&Aacuterea',
+                        sortable: true
+                    }, {
+                        field: 'preciom2',
+                        title: 'Precio por m2',
+                        sortable: true
+                    }, {
+                        field: 'precioTotal',
+                        title: 'Precio Total',
+                        sortable: true
+                    }, {
+                        field: 'observaciones',
+                        title: 'Observaciones'
+                    }]
+                });
+            });
+    };
+
+    $scope.listaLotes();
+});
+
+jacconsultoresControllers.controller('clienteCtrl', function ($scope) {
+    var that = this;
     $scope.formData = {text: "str"};
 
     // Cuando se cargue la página, pide del API todos los TODOs
@@ -235,8 +314,4 @@ jacconsultoresControllers.controller('loteCtrl', function ($scope, $http) {
                 console.log('Error:' + data);
             });
     };
-});
-
-jacconsultoresControllers.controller('clienteCtrl', function ($scope) {
-    var that = this;
 });
