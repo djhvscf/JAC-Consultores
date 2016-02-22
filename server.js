@@ -47,6 +47,24 @@ app.post('/api/condominio', function(req, res) {
         });
     });
 });
+
+app.delete('/api/condominio/:id', function(req, res) {
+    Condominio.remove({
+        _id: req.params.id
+    }, function(err, condominio) {
+        if(err){
+            res.send(err);
+        }
+
+        Condominio.find(function(err, condominios) {
+            if(err){
+                res.send(err);
+            }
+            res.json(condominios);
+        });
+
+    })
+});
 /*****************************************************************
  * Condominios API
  ****************************************************************/
@@ -318,6 +336,24 @@ app.post('/api/lote', function(req, res) {
             res.json(lotes);
         });
     });
+});
+
+app.delete('/api/lote/:id', function(req, res) {
+    Lote.remove({
+        _id: req.params.id
+    }, function(err, cliente) {
+        if(err){
+            res.send(err);
+        }
+
+        Lote.find(function(err, clientes) {
+            if(err){
+                res.send(err);
+            }
+            res.json(clientes);
+        });
+
+    })
 });
 /*****************************************************************
  * Lote API

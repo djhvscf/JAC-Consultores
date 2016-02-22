@@ -3,7 +3,8 @@ jacconsultoresServices.factory('condominioService', ['$http', function($http) {
 
     return {
         createCondominio: createCondominio,
-        getCondominios: getCondominios
+        getCondominios: getCondominios,
+        deleteCondominio: deleteCondominio
     };
 
     function createCondominio (condominio, callback) {
@@ -16,6 +17,14 @@ jacconsultoresServices.factory('condominioService', ['$http', function($http) {
 
     function getCondominios (callback) {
         $http.get(URL_BASE)
+            .success(callback)
+            .error(function(data) {
+                console.log("Error:" + data)
+            });
+    }
+
+    function deleteCondominio (idCondominio, callback) {
+        $http.delete(URL_BASE + "/" + idCondominio)
             .success(callback)
             .error(function(data) {
                 console.log("Error:" + data)
