@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('jacconsultores', ['ngRoute', 'jacconsultoresControllers'])
+angular.module('jacconsultores', ['ngRoute', 'jacconsultoresControllers', 'jacconsultoresServices'])
 
     .config(function($routeProvider){
         $routeProvider.when("/agregarPropiedad",
@@ -12,7 +12,7 @@ angular.module('jacconsultores', ['ngRoute', 'jacconsultoresControllers'])
         ).when("/listaPropiedades",
             {
                 templateUrl: "views/listaPropiedades.html",
-                controller: "listaPropiedadesCtrl",
+                controller: "propiedadCtrl",
                 controllerAs: "listaPropiedad"
             }
         ).when("/agregarLote",
@@ -24,7 +24,7 @@ angular.module('jacconsultores', ['ngRoute', 'jacconsultoresControllers'])
         ).when("/listaLotes",
             {
                 templateUrl: "views/listaLotes.html",
-                controller: "listaLotesCtrl",
+                controller: "loteCtrl",
                 controllerAs: "listaLote"
             }
         ).when("/agregarCliente",
@@ -42,7 +42,7 @@ angular.module('jacconsultores', ['ngRoute', 'jacconsultoresControllers'])
         ).when("/listaCondominios",
             {
                 templateUrl: "views/listaCondominios.html",
-                controller: "listaCondominiosCtrl",
+                controller: "condominioCtrl",
                 controllerAs: "listaCondominio"
             }
         ).otherwise({
