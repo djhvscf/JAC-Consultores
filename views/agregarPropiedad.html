@@ -31,8 +31,10 @@
                 <div class="form-group">
                     <label for="condominio" class="col-sm-2 control-label">Condominio</label>
                     <div class="col-sm-10">
-                        <select id="condominio" class="form-control" ng-model="selectedCondominio.condominioId"
-                                ng-options="condominio._id as condominio.nombre for condominio in condominios"></select>
+                        <select id="condominio" class="form-control"
+                                ng-model="selectedCondominio"
+                                ng-options="condominio as condominio.nombre for condominio in condominios"
+                                ng-init="getCondominios(true)"></select>
                     </div>
                 </div>
                 <div class="form-group">

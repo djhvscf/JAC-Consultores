@@ -12,6 +12,19 @@
         <div class="col-xs-12 col-sm-9">
             <h3>Lista de Propiedades</h3>
         </div>
+        <div id="toolbar">
+            <div class="form-inline" role="form">
+                <div class="form-group">
+                    <span>Condominios: </span>
+                        <select id="condominioFilter" class="form-control"
+                                ng-model="selectedCondominio"
+                                ng-options="condominio as condominio.nombre for condominio in condominios"
+                                ng-init="getCondominios()"
+                                ng-change="onCondominioChange()">
+                        </select>
+                </div>
+            </div>
+        </div>
         <div class="col-xs-12 col-sm-12">
             <table id="table"></table>
         </div>

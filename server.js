@@ -4,6 +4,8 @@ var mongoose     = require('mongoose');
 
 mongoose.connect('mongodb://jac:jac@ds059375.mongolab.com:59375/jacconsultores');
 
+var db = mongoose.connection;
+
 app.configure(function() {
     app.use(express.static(__dirname + '/'));
     app.use(express.logger('dev'));
@@ -74,7 +76,7 @@ app.delete('/api/condominio/:id', function(req, res) {
  ****************************************************************/
 var Propiedad = mongoose.model("Propiedad", {
     isCasaCondominio: Boolean,
-    idCondominio: Number,
+    idCondominio: String,
     isVenta: Boolean,
     direccion: String,
     isPropietario: Boolean,
@@ -109,6 +111,17 @@ app.get('/api/propiedad', function(req, res) {
         if(err) {
             res.send(err);
         }
+
+        res.json(propiedades);
+    });
+});
+
+app.get('/api/propiedad/:id', function(req, res) {
+    Propiedad.find({ 'idCondominio': req.params.id }, function (err, propiedades) {
+        if(err) {
+            res.send(err);
+        }
+
         res.json(propiedades);
     });
 });

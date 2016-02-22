@@ -5,7 +5,8 @@ jacconsultoresServices.factory('propiedadService', ['$http', function($http) {
     return {
         createPropiedad: createPropiedad,
         getPropiedades: getPropiedades,
-        deletePropiedad: deletePropiedad
+        deletePropiedad: deletePropiedad,
+        getPropiedadByCondominio: getPropiedadByCondominio
     };
 
     function createPropiedad (propiedad, callback) {
@@ -26,6 +27,14 @@ jacconsultoresServices.factory('propiedadService', ['$http', function($http) {
 
     function deletePropiedad (idPropiedad, callback) {
         $http.delete(URL_BASE + "/" + idPropiedad)
+            .success(callback)
+            .error(function(data) {
+                console.log("Error:" + data)
+            });
+    }
+
+    function getPropiedadByCondominio (idCondominio, callback) {
+        $http.get(URL_BASE + "/" + idCondominio)
             .success(callback)
             .error(function(data) {
                 console.log("Error:" + data)
