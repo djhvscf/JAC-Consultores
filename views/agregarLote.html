@@ -14,11 +14,11 @@
             <h6>-</h6>
         </div>
         <div class="col-xs-12 col-sm-9">
-            <form class="form-horizontal" role="form" id="ingLote">
+            <form class="form-horizontal" role="form" id="ingLote" name="ingLote">
                 <div class="form-group">
                     <label for="residencial" class="col-sm-2 control-label">Residencial</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" ng-model="formLote.residencial" id="residencial" name="residencial" placeholder="Residencial">
+                        <input type="text" class="form-control" ng-model="formLote.residencial" id="residencial" name="residencial" placeholder="Residencial" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -29,7 +29,7 @@
                             <strong>Corredor</strong>
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="venta" value="">
+                            <input type="radio" name="venta" value="" checked>
                             <strong>Propietario</strong>
                         </label>
                     </div>
@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label for="direccion" class="col-sm-2 control-label">Dirección</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" id="direccion" ng-model="formLote.direccion" name="direccion" rows="6"></textarea>
+                        <textarea class="form-control" id="direccion" ng-model="formLote.direccion" name="direccion" rows="6" required></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -49,27 +49,27 @@
                 <div class="form-group">
                     <label for="plncatastro" class="col-sm-2 control-label">Plano Catastro</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="plncatastro" ng-model="formLote.planoCatastro" name="plncatastro" placeholder="Plano Catastro">
+                        <input type="text" class="form-control" id="plncatastro" ng-model="formLote.planoCatastro" name="plncatastro" placeholder="Plano Catastro" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="area" class="col-sm-2 control-label">Área</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" ng-model="formLote.area" id="area" name="area" placeholder="Área">
+                        <input type="text" class="form-control" ng-model="formLote.area" id="area" name="area" placeholder="Área" required>
                     </div>
                     <label for="preciom" class="col-sm-2 control-label">Precio m2</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="preciom" ng-model="formLote.preciom2" name="preciom" placeholder="Precio m2">
+                        <input type="text" class="form-control" id="preciom" ng-model="formLote.preciom2" name="preciom" placeholder="Precio m2" required>
                     </div>
                     <label for="cuotaman" class="col-sm-2 control-label">Cuota Mant.</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="cuotaman" ng-model="formLote.cuotaMant" name="cuotaman" placeholder="Cuota Mantenimiento">
+                        <input type="text" class="form-control" id="cuotaman" ng-model="formLote.cuotaMant" name="cuotaman" placeholder="Cuota Mantenimiento" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="preciototal" class="col-sm-2 control-label">Precio Total</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="preciototal" ng-model="formLote.precioTotal" name="preciototal" placeholder="Precio Total">
+                        <input type="text" class="form-control" id="preciototal" ng-model="formLote.precioTotal" name="preciototal" placeholder="Precio Total" required>
                     </div>
                 </div>
                 <div class="form-group">
