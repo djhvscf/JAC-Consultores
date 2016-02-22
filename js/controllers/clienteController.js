@@ -1,15 +1,21 @@
 jacconsultoresControllers.controller('clienteCtrl', function ($scope, $http, clienteService, generalService) {
     $scope.formCliente = {};
 
-    $scope.createCliente = function(){
-        clienteService.createCliente($scope.formCliente, function(data) {
-            $scope.formCliente = {};
-            generalService.generateNoty("Se agreg&oacute correctamente el cliente", "success");
-        });
+    $scope.createCliente = function() {
+        if (this.ingCliente.$valid) {
+            clienteService.createCliente($scope.formCliente, function (data) {
+                $scope.formCliente = {};
+                generalService.generateNoty("Se agreg&oacute correctamente el cliente", "success");
+            });
+        } else {
+            generalService.generateNoty("Error. Llene los campos requeridos antes de crear el cliente!", "error");
+        }
     };
 
-    $scope.genericFormatter = function (value, row, index) {
-        return value ? "S&iacute" : "No";
+    $scope.deleteCliente = function (idCliente) {
+        clienteService.deleteCliente(idCliente, function () {
+            generalService.generateNoty("Se elimin&oacute correctamente el cliente", "success");
+        });
     };
 
     $scope.listaClientes = function () {
@@ -22,6 +28,10 @@ jacconsultoresControllers.controller('clienteCtrl', function ($scope, $http, cli
                 locale: "es-CR",
                 showColumns: true,
                 columns: [{
+                    field: '_id',
+                    title: 'Id',
+                    visible: false
+                }, {
                     field: 'isCompra',
                     title: 'Necesita comprar',
                     sortable: true,
@@ -140,8 +150,40 @@ jacconsultoresControllers.controller('clienteCtrl', function ($scope, $http, cli
                 }, {
                     field: 'observaciones',
                     title: 'Observaciones'
+                }, {
+                    field: 'operate',
+                    title: 'Eliminar',
+                    align: 'center',
+                    events: window.operateEvents,
+                    formatter: $scope.operateFormatter
                 }]
             });
         });
+    };
+
+    $scope.genericFormatter = function (value, row, index) {
+        return value ? "S&iacute" : "No";
+    };
+
+    $scope.operateFormatter = function (value, row, index) {
+        return [
+            '<a class="remove" href="javascript:void(0)" title="Remove">',
+            '<i class="glyphicon glyphicon-remove"></i>',
+            '</a>'
+        ].join('');
+    };
+
+    window.operateEvents = {
+        'click .remove': function (e, value, row, index) {
+            generalService.generateNoty("Desea eliminar el cliente?", "confirm", function ($noty) {
+                $("#table").bootstrapTable('remove', {
+                    field: '_id',
+                    values: [row._id]
+                });
+
+                $scope.deleteCliente(row._id);
+                $noty.close();
+            });
+        }
     };
 });

@@ -247,6 +247,24 @@ app.post('/api/cliente', function(req, res) {
         });
     });
 });
+
+app.delete('/api/cliente/:id', function(req, res) {
+    Cliente.remove({
+        _id: req.params.id
+    }, function(err, cliente) {
+        if(err){
+            res.send(err);
+        }
+
+        Cliente.find(function(err, clientes) {
+            if(err){
+                res.send(err);
+            }
+            res.json(clientes);
+        });
+
+    })
+});
 /*****************************************************************
  * Cliente API
  ****************************************************************/
