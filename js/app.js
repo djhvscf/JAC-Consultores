@@ -33,6 +33,12 @@ angular.module('jacconsultores', ['ngRoute', 'jacconsultoresControllers', 'jacco
                 controller: "clienteCtrl",
                 controllerAs: "cliente"
             }
+        ).when("/listaClientes",
+            {
+                templateUrl: "views/listaClientes.html",
+                controller: "clienteCtrl",
+                controllerAs: "cliente"
+            }
         ).when("/agregarCondominio",
             {
                 templateUrl: "views/agregarCondominio.html",

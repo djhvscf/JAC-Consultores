@@ -31,5 +31,4 @@ jacconsultoresControllers.controller('condominioCtrl', function ($scope, $http, 
             });
         });
     };
-
 });
