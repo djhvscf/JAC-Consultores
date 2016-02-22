@@ -12,14 +12,20 @@ jacconsultoresControllers.controller('propiedadCtrl', function ($scope, $http, p
     };
 
     $scope.createPropiedad = function () {
-        propiedadService.createPropiedad($scope.formPropiedad, function () {
-            $scope.formPropiedad = {};
-            generalService.generateNoty("Se agreg&oacute correctamente la propiedad", "success");
-        });
+        if (this.ingPropiedad.$valid) {
+            propiedadService.createPropiedad($scope.formPropiedad, function () {
+                $scope.formPropiedad = {};
+                generalService.generateNoty("Se agreg&oacute correctamente la propiedad", "success");
+            });
+        } else {
+            generalService.generateNoty("Error. Llene los campos requeridos antes de crear la propiedad!", "error");
+        }
     };
 
-    $scope.genericFormatter = function (value, row, index) {
-        return value ? "S&iacute" : "No";
+    $scope.deletePropiedad = function (idPropiedad) {
+        propiedadService.deletePropiedad(idPropiedad, function () {
+            generalService.generateNoty("Se elimin&oacute correctamente la propiedad", "success");
+        });
     };
 
     $scope.listaPropiedades = function () {
@@ -31,7 +37,12 @@ jacconsultoresControllers.controller('propiedadCtrl', function ($scope, $http, p
                 search: true,
                 locale: "es-CR",
                 showColumns: true,
+                idField: "id",
                 columns: [{
+                    field: '_id',
+                    title: 'Id',
+                    visible: false
+                }, {
                     field: 'isVenta',
                     title: 'Es una Venta',
                     sortable: true,
@@ -147,8 +158,40 @@ jacconsultoresControllers.controller('propiedadCtrl', function ($scope, $http, p
                 }, {
                     field: 'observaciones',
                     title: 'Observaciones'
+                }, {
+                    field: 'operate',
+                    title: 'Eliminar',
+                    align: 'center',
+                    events: window.operateEvents,
+                    formatter: $scope.operateFormatter
                 }]
             });
         });
+    };
+
+    $scope.genericFormatter = function (value, row, index) {
+        return value ? "S&iacute" : "No";
+    };
+
+    $scope.operateFormatter = function (value, row, index) {
+        return [
+            '<a class="remove" href="javascript:void(0)" title="Remove">',
+            '<i class="glyphicon glyphicon-remove"></i>',
+            '</a>'
+        ].join('');
+    };
+
+    window.operateEvents = {
+        'click .remove': function (e, value, row, index) {
+            generalService.generateNoty("Desea eliminar la propiedad?", "confirm", function ($noty) {
+                $("#table").bootstrapTable('remove', {
+                    field: '_id',
+                    values: [row._id]
+                });
+
+                $scope.deletePropiedad(row._id);
+                $noty.close();
+            });
+        }
     };
 });

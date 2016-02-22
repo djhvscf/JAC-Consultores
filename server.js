@@ -139,6 +139,24 @@ app.post('/api/propiedad', function(req, res) {
         });
     });
 });
+
+app.delete('/api/propiedad/:id', function(req, res) {
+    Propiedad.remove({
+        _id: req.params.id
+    }, function(err, propiedad) {
+        if(err){
+            res.send(err);
+        }
+
+        Propiedad.find(function(err, propiedades) {
+            if(err){
+                res.send(err);
+            }
+            res.json(propiedades);
+        });
+
+    })
+});
 /*****************************************************************
  * Propiedad API
  ****************************************************************/
